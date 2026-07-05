@@ -1,0 +1,34 @@
+{% extends 'payment/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+<h2>Hostel Dashboard</h2>
+
+
+
+<hr>
+
+<h3>Total Rooms: {{ total_rooms }}</h3>
+<h3>Total Boys: {{ total_boys }}</h3>
+<h2>Hostel Dashboard</h2>
+
+<div style="border:1px solid black; padding:10px; width:200px;">
+    <h3>Total Rooms</h3>
+    <p>{{ total_rooms }}</p>
+</div>
+
+<br>
+
+<div style="border:1px solid black; padding:10px; width:200px;">
+    <h3>Total Boys</h3>
+    <p>{{ total_boys }}</p>
+</div>
+
+</body>
+</html>
+{% endblock %}

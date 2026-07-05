@@ -1,0 +1,38 @@
+{% extends 'payment/base.html' %}
+{% block content %}
+<h2>Edit Boy</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="full_name" value="{{ boy.full_name }}" required>
+    <br><br>
+
+    <input type="text" name="father_name" value="{{ boy.father_name }}" required>
+    <br><br>
+
+    <input type="text" name="phone" value="{{ boy.phone }}" required>
+    <br><br>
+
+    <input type="text" name="cnic" value="{{ boy.cnic }}" required>
+    <br><br>
+
+    <textarea name="address">{{ boy.address }}</textarea>
+    <br><br>
+
+    <select name="room">
+        {% for room in rooms %}
+            <option value="{{ room.id }}"
+                {% if room.id == boy.room.id %}selected{% endif %}>
+                {{ room.room_number }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <button type="submit">Update</button>
+</form>
+
+
+{% endblock  %}

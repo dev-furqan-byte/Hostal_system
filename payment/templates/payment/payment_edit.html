@@ -1,0 +1,53 @@
+{% extends 'payment/base.html' %}
+{% block content %}
+<h2>Edit Payment</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Boy</label><br>
+    <select name="boy">
+        {% for boy in boys %}
+            <option value="{{ boy.id }}"
+                {% if boy.id == payment.boy.id %}selected{% endif %}>
+                {{ boy.full_name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Month</label><br>
+    <input type="text" name="month" value="{{ payment.month }}">
+
+    <br><br>
+
+    <label>Year</label><br>
+    <input type="number" name="year" value="{{ payment.year }}">
+
+    <br><br>
+
+    <label>Advance</label><br>
+    <input type="number" name="advance" value="{{ payment.advance }}">
+
+    <br><br>
+
+    <label>Rent</label><br>
+    <input type="number" name="rent" value="{{ payment.rent }}">
+
+    <br><br>
+
+    <label>Status</label><br>
+    <select name="status">
+        <option value="paid" {% if payment.status == "paid" %}selected{% endif %}>Paid</option>
+        <option value="unpaid" {% if payment.status == "unpaid" %}selected{% endif %}>Unpaid</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Update Payment</button>
+</form>
+
+
+
+{% endblock %}

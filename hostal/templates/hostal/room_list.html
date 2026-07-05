@@ -1,0 +1,42 @@
+{% extends 'payment/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room List</title>
+</head>
+<body>
+
+<h2>All Hostel Rooms</h2>
+
+<table border="1">
+    <tr>
+        <th>Room Number</th>
+        <th>Occupied</th>
+        <th>Available</th>
+        <th>Status</th>
+    </tr>
+
+    {% for room in rooms %}
+    <tr>
+        <td>{{ room.room_number }}</td>
+        <td>{{ room.boys.count }}</td>
+        <td>{{ room.available_seats }}</td>
+        <td>
+            {% if room.is_full %}
+                ❌ Full
+            {% else %}
+                ✅ Available
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
+
+
+
+{% endblock %}

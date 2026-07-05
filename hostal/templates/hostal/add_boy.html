@@ -1,0 +1,36 @@
+{% extends 'payment/base.html' %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Full Name</label><br>
+    <input type="text" name="full_name"><br><br>
+
+    <label>Father Name</label><br>
+    <input type="text" name="father_name"><br><br>
+
+    <label>Phone</label><br>
+    <input type="text" name="phone"><br><br>
+
+    <label>CNIC</label><br>
+    <input type="text" name="cnic"><br><br>
+
+    <label>Address</label><br>
+    <textarea name="address"></textarea><br><br>
+
+    <label>Room</label><br>
+    <select name="room">
+        {% for room in rooms %}
+            <option value="{{ room.id }}">
+                {{ room.room_number }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <button type="submit">Add Boy</button>
+
+</form>
+
+{% endblock %}

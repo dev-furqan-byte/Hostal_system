@@ -1,0 +1,63 @@
+{% extends 'payment/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Payment</title>
+</head>
+<body>
+
+<h2>Add Payment</h2>
+
+{% for message in messages %}
+    <p style="color:green;">{{ message }}</p>
+{% endfor %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Boy</label><br>
+    <select name="boy" required>
+        {% for boy in boys %}
+            <option value="{{ boy.id }}">
+                {{ boy.full_name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Month</label><br>
+    <input type="text" name="month" required>
+    <br><br>
+
+    <label>Year</label><br>
+    <input type="number" name="year" value="2026" required>
+    <br><br>
+
+    <label>Advance</label><br>
+    <input type="number" name="advance" value="0">
+    <br><br>
+
+    <label>Rent</label><br>
+    <input type="number" name="rent" required>
+    <br><br>
+
+    <label>Status</label><br>
+    <select name="status">
+        <option value="paid">Paid</option>
+        <option value="unpaid">Unpaid</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Save Payment</button>
+</form>
+
+</body>
+</html>
+
+
+
+
+{% endblock %}
