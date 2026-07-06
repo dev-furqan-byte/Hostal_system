@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Boy, Room
-
 from django.db import IntegrityError
 
 @login_required
@@ -30,11 +29,11 @@ def add_boy(request):
             return redirect("add_boy")
     return render(request, "hostal/add_boy.html", {"rooms": rooms})
 
-@login_required
+
 def room_list(request):
     rooms = Room.objects.all()
     return render(request, "hostal/room_list.html", {"rooms": rooms})
-@login_required
+
 def dashboard(request):
 
     total_rooms = Room.objects.count()
